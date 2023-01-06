@@ -12,5 +12,8 @@ namespace WebAppMVC.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Grade> Grades { get; set; }
+        public DbSet<User> Users { get; set; }
+
+        public System.Data.Entity.DbSet<WebAppMVC.DTO.AuthenticateResponse> AuthenticateResponses { get; set; }
     }
 }

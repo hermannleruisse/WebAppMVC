@@ -11,7 +11,11 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
         // GET: ADMIN/Dashboard
         public ActionResult Index()
         {
-            return View();
+            if(Session["UserId"] != null)
+            {
+                return View();
+            }
+            return RedirectToAction("Login");
         }
     }
 }
