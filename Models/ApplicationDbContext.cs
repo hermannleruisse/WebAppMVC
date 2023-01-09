@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using WebAppMVC.Helpers;
 
 namespace WebAppMVC.Models
 {
@@ -6,7 +7,8 @@ namespace WebAppMVC.Models
     {
         public ApplicationDbContext(): base("KondiDB") //Connection string in web.config
         {
-            Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseAlways<ApplicationDbContext>());
+            //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseAlways<ApplicationDbContext>());
+            Database.SetInitializer<ApplicationDbContext>(new AppDBInitializer());
         }
 
         public DbSet<Product> Products { get; set; }

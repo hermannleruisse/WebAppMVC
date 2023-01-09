@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebAppMVC.DTO;
 using WebAppMVC.Models;
+using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace WebAppMVC.Controllers
 {
@@ -24,19 +25,20 @@ namespace WebAppMVC.Controllers
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var us = ctx.Users.Where(x => x.Username.Equals(auth.Username) && x.Password.Equals(auth.Password)).FirstOrDefault();
-                    if (us != null)
+                    String pass = BCryptNet.HashPassword(auth.Password);
+                    var us = ctx.Users.Where(x => x.Username.Equals(auth.Username)).FirstOrDefault();
+                    if (us != null && BCryptNet.Verify(auth.Password, us.Password))
                     {
                         Session["UserId"] = us.Id;
                         Session["Username"] = us.Username;
                         Session["Role"] = us.Role;
                         Session.Timeout = 10;
-                        return RedirectToAction("Index", "Dashboard");
+                        return RedirectToAction("Index", "Dashboard", new { area = "ADMIN" });
                     }
                 }
             }
             ViewBag.Message = "Login ou mots de passe incorrecte";
-            return View();
+            return View("Index");
         }
     }
 }

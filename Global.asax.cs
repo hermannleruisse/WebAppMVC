@@ -1,10 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WebAppMVC.Helpers;
+using WebAppMVC.Models;
 
 namespace WebAppMVC
 {
@@ -16,6 +15,12 @@ namespace WebAppMVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Database.SetInitializer(new AppDBInitializer());
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Database.Initialize(true);
+            }
         }
     }
 }

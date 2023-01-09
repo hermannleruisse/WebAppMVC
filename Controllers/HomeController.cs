@@ -11,13 +11,13 @@ namespace WebAppMVC.Controllers
     {
         public ActionResult Index()
         {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var stud = new Student() { StudentName = "Bill" };
+            //using (var ctx = new ApplicationDbContext())
+            //{
+            //    var stud = new Student() { StudentName = "Bill" };
 
-                ctx.Students.Add(stud);
-                ctx.SaveChanges();
-            }
+            //    ctx.Students.Add(stud);
+            //    ctx.SaveChanges();
+            //}
 
             return View();
         }
