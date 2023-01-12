@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebAppMVC.DTO;
+using WebAppMVC.Helpers;
 using WebAppMVC.Models;
 
 namespace WebAppMVC.Controllers
@@ -11,15 +13,11 @@ namespace WebAppMVC.Controllers
     {
         public ActionResult Index()
         {
-            //using (var ctx = new ApplicationDbContext())
-            //{
-            //    var stud = new Student() { StudentName = "Bill" };
+            CustomViewModel cVM = new CustomViewModel();
+            cVM.Adresse = LoadData.LoadAdress();
+            cVM.Departements = LoadData.LoadDepartement();
 
-            //    ctx.Students.Add(stud);
-            //    ctx.SaveChanges();
-            //}
-
-            return View();
+            return View(cVM);
         }
 
         public ActionResult About()

@@ -21,17 +21,18 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-                    <li>@Html.ActionLink("À propos de", "About", "Home")</li>
+                    <li>@Html.ActionLink("Message", "Index", "Contact")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li><a href="@Url.Action("Index", "Home", new { area = string.Empty })">Site</a></li>
+                </ul>
 
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="@Url.Action("Index", "Home", new { area = string.Empty })">Site</a></li>
                     @if (Session["UserId"] != null)
                     {
                         <li>
                             Hi @Session["Username"].ToString()
                         </li>
                     }
-
                 </ul>
             </div>
         </div>

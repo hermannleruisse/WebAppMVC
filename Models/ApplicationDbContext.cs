@@ -16,6 +16,10 @@ namespace WebAppMVC.Models
         public DbSet<Grade> Grades { get; set; }
         public DbSet<User> Users { get; set; }
 
-        public System.Data.Entity.DbSet<WebAppMVC.DTO.AuthenticateResponse> AuthenticateResponses { get; set; }
+        public DbSet<DTO.AuthenticateResponse> AuthenticateResponses { get; set; }
+
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Adresse> Adresses { get; set; }
+        public DbSet<Departement> Departements { get; set; }
     }
 }

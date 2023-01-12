@@ -177,18 +177,25 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\ADMIN\ADMINAreaRegistration.cs" />
+    <Compile Include="Areas\ADMIN\Controllers\ContactController.cs" />
     <Compile Include="Areas\ADMIN\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\ADMIN\Controllers\DepartementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="DTO\AuthenticateRequest.cs" />
     <Compile Include="DTO\AuthenticateResponse.cs" />
+    <Compile Include="DTO\CustomViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AllowAnonymousAttribute.cs" />
     <Compile Include="Helpers\AppDBInitializer.cs" />
     <Compile Include="Helpers\AuthorizeAttribute.cs" />
+    <Compile Include="Helpers\LoadData.cs" />
+    <Compile Include="Models\Adresse.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Departement.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Role.cs" />
@@ -346,6 +353,9 @@
     <Content Include="Areas\ADMIN\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\ADMIN\Views\Dashboard\index.cshtml" />
     <Content Include=".gitignore" />
+    <Content Include="Areas\ADMIN\Views\Contact\Index.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Contact\delete.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Contact\detail.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -392,6 +402,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ADMIN\Data\" />
+    <Folder Include="Areas\ADMIN\Views\Departement\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
