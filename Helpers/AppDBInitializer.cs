@@ -38,6 +38,74 @@ namespace WebAppMVC.Helpers
             };
             context.Adresses.AddRange(addresse);
 
+            var departements = new List<Departement>
+            {
+                new Departement { Libelle = "Cardiology", Description = "Qui laudantium consequatur laborum sit qui ad sapiente " +
+                "dila parde sonata raqer a videna mareta paulona marka"+ " Et nobis maiores eius. " +
+                "Voluptatibus ut enim blanditiis atque harum sint. Laborum eos " +
+                "ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat " +
+                "minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat " +
+                "quos qui similique accusamus nostrum rem vero", Url = "departments-1.jpg" },
+
+                new Departement { Libelle = "Neurology", Description = "Qui laudantium consequatur laborum sit qui ad sapiente " +
+                "dila parde sonata raqer a videna mareta paulona marka"+ " Et nobis maiores eius. " +
+                "Voluptatibus ut enim blanditiis atque harum sint. Laborum eos " +
+                "ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat " +
+                "minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat " +
+                "quos qui similique accusamus nostrum rem vero", Url = "departments-2.jpg" },
+
+                new Departement { Libelle = "Hepatology", Description = "Qui laudantium consequatur laborum sit qui ad sapiente " +
+                "dila parde sonata raqer a videna mareta paulona marka"+ " Et nobis maiores eius. " +
+                "Voluptatibus ut enim blanditiis atque harum sint. Laborum eos " +
+                "ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat " +
+                "minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat " +
+                "quos qui similique accusamus nostrum rem vero", Url = "departments-3.jpg" },
+
+                new Departement { Libelle = "Pediatrics", Description = "Qui laudantium consequatur laborum sit qui ad sapiente " +
+                "dila parde sonata raqer a videna mareta paulona marka"+ " Et nobis maiores eius. " +
+                "Voluptatibus ut enim blanditiis atque harum sint. Laborum eos " +
+                "ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat " +
+                "minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat " +
+                "quos qui similique accusamus nostrum rem vero", Url = "departments-4.jpg" },
+
+                new Departement { Libelle = "Eye Care", Description = "Qui laudantium consequatur laborum sit qui ad sapiente " +
+                "dila parde sonata raqer a videna mareta paulona marka"+ " Et nobis maiores eius. " +
+                "Voluptatibus ut enim blanditiis atque harum sint. Laborum eos " +
+                "ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat " +
+                "minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat " +
+                "quos qui similique accusamus nostrum rem vero", Url = "departments-5.jpg" }
+            };
+            context.Departements.AddRange(departements);
+
+            var docteurs = new List<Docteur>
+            {
+                new Docteur
+                {
+                    NomComplet = "Walter White", Titre = "Chief Medical Officer", 
+                    Description = "Explicabo voluptatem mollitia et repellat qui dolorum quasi", Url = "doctors-1.jpg",
+                    UrlFacebook = "", UrlInstagram = "", UrlTwitter = ""
+                },
+                new Docteur
+                {
+                    NomComplet = "Sarah Jhonson", Titre = "Anesthesiologist",
+                    Description = "Aut maiores voluptates amet et quis praesentium qui senda para", Url = "doctors-2.jpg",
+                    UrlFacebook = "", UrlInstagram = "", UrlTwitter = ""
+                },
+                new Docteur
+                {
+                    NomComplet = "William Anderson", Titre = "Cardiology",
+                    Description = "Quisquam facilis cum velit laborum corrupti fuga rerum quia", Url = "doctors-3.jpg",
+                    UrlFacebook = "", UrlInstagram = "", UrlTwitter = ""
+                },
+                new Docteur
+                {
+                    NomComplet = "Amanda Jepson", Titre = "Neurosurgeon",
+                    Description = "Dolorum tempora officiis odit laborum officiis et et accusamus", Url = "doctors-4.jpg",
+                    UrlFacebook = "", UrlInstagram = "", UrlTwitter = ""
+                }
+            };
+            context.Docteurs.AddRange(docteurs);
+
             context.SaveChanges();
         }
     }

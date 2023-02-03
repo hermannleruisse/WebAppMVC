@@ -180,6 +180,7 @@
     <Compile Include="Areas\ADMIN\Controllers\ContactController.cs" />
     <Compile Include="Areas\ADMIN\Controllers\DashboardController.cs" />
     <Compile Include="Areas\ADMIN\Controllers\DepartementController.cs" />
+    <Compile Include="Areas\ADMIN\Controllers\DocteurController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="DTO\AuthenticateRequest.cs" />
@@ -191,14 +192,20 @@
     <Compile Include="Helpers\AllowAnonymousAttribute.cs" />
     <Compile Include="Helpers\AppDBInitializer.cs" />
     <Compile Include="Helpers\AuthorizeAttribute.cs" />
+    <Compile Include="Helpers\Folder.cs" />
     <Compile Include="Helpers\LoadData.cs" />
+    <Compile Include="Helpers\FileManager.cs" />
+    <Compile Include="Helpers\ValidateFileCustom.cs" />
+    <Compile Include="Helpers\ValidateFile.cs" />
     <Compile Include="Models\Adresse.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Departement.cs" />
+    <Compile Include="Models\Docteur.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Social.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -356,6 +363,16 @@
     <Content Include="Areas\ADMIN\Views\Contact\Index.cshtml" />
     <Content Include="Areas\ADMIN\Views\Contact\delete.cshtml" />
     <Content Include="Areas\ADMIN\Views\Contact\detail.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Departement\Index.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Departement\delete.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Departement\detail.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Departement\create.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Departement\edit.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Docteur\Index.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Docteur\delete.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Docteur\edit.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Docteur\create.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Docteur\detail.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -367,6 +384,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="UploadedFiles\Departement\departments-1.jpg" />
+    <Content Include="UploadedFiles\Departement\departments-2.jpg" />
+    <Content Include="UploadedFiles\Departement\departments-3.jpg" />
+    <Content Include="UploadedFiles\Departement\departments-4.jpg" />
+    <Content Include="UploadedFiles\Departement\departments-5.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -402,7 +424,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ADMIN\Data\" />
-    <Folder Include="Areas\ADMIN\Views\Departement\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

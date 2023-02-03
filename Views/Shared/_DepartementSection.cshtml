@@ -9,26 +9,49 @@
         <div class="row gy-4">
             <div class="col-lg-3">
                 <ul class="nav nav-tabs flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Cardiology</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Neurology</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Hepatology</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Pediatrics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Eye Care</a>
-                    </li>
+                    @foreach (var dep in @Model.Departements)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link @(@Model.Departements.IndexOf(dep) == 0 ? "active show" : "")" data-bs-toggle="tab" href="@($"#tab-{dep.Id}")">@dep.Libelle</a>
+                        </li>
+                    }
+
+
+                    @*<li class="nav-item">
+                            <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Cardiology</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Neurology</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Hepatology</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Pediatrics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Eye Care</a>
+                        </li>*@
                 </ul>
             </div>
             <div class="col-lg-9">
                 <div class="tab-content">
-                    <div class="tab-pane active show" id="tab-1">
+                    @foreach (var dep in @Model.Departements)
+                    {
+                        <div class="tab-pane @(@Model.Departements.IndexOf(dep) == 0 ? "active show" : "")" id="@($"tab-{@dep.Id}")">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <h3>@dep.Libelle</h3>
+                                    <p class="fst-italic">@dep.Description</p>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img src="@Url.Content(dep.getPhotoUrl())" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @*<div class="tab-pane active show" id="tab-1">
                         <div class="row gy-4">
                             <div class="col-lg-8 details order-2 order-lg-1">
                                 <h3>Cardiology</h3>
@@ -87,7 +110,7 @@
                                 <img src="assets/img/departments-5.jpg" alt="" class="img-fluid">
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>

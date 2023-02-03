@@ -41,38 +41,37 @@
             </div>
 
             <div class="col-lg-8 mt-5 mt-lg-0">
-                @*@model WebAppMVC.Models.Contact*@
+                
                 @using (Html.BeginForm("Create", "Contact", new { area = "ADMIN" }))
                 {
                     @Html.AntiForgeryToken()
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            @Html.TextBoxFor(x => x.Contact.Nom, new { @class = "form-control", @placeholder = "Votre nom" })
-                            @Html.ValidationMessageFor(x => x.Contact.Nom)
+                            @Html.TextBox("Nom", null, new { @class = "form-control", @placeholder = "Votre nom" })
+                            @*@Html.TextBoxFor(x => x.Contact.Nom, new { @class = "form-control", @placeholder = "Votre nom" })*@
+                            @Html.ValidationMessage("Nom")
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
-                            @Html.TextBoxFor(x => x.Contact.Email, new { @class = "form-control", @placeholder = "Votre email" })
-                            @Html.ValidationMessageFor(x => x.Contact.Email)
+                            @Html.TextBox("Email", null, new { @class = "form-control", @placeholder = "Votre email" })
+                            @Html.ValidationMessage("Email")
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        @Html.TextBoxFor(x => x.Contact.Objet, new { @class = "form-control", @placeholder = "Objet" })
-                        @Html.ValidationMessageFor(x => x.Contact.Objet)
+                        @Html.TextBox("Objet", null, new { @class = "form-control", @placeholder = "Objet" })
+                        @Html.ValidationMessage("Objet")
                     </div>
                     <div class="form-group mt-3">
-                        @Html.TextAreaFor(x => x.Contact.Message, new { @class = "form-control", @placeholder = "Message", @rows = "5" })
-                        @Html.ValidationMessageFor(x => x.Contact.Message)
+                        @Html.TextArea("Message", new { @class = "form-control", @placeholder = "Message", @rows = "5" })
+                        @Html.ValidationMessage("Message")
                     </div>
 
                     <div class="my-3">
                         @if (ViewBag.Message != null)
                         {
-
                             <div class="alert alert-info alert-dismissible">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 <strong>Info!</strong> @ViewBag.Message
                             </div>
-
                         }
                     </div>
                     <div class="text-center"><button type="submit">Envoyer Message</button></div>

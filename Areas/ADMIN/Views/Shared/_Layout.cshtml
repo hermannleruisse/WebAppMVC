@@ -23,15 +23,15 @@
                     <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
                     <li>@Html.ActionLink("Message", "Index", "Contact")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Département", "Index", "Departement")</li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="@Url.Action("Index", "Home", new { area = string.Empty })">Site</a></li>
-                    @if (Session["UserId"] != null)
+                    @if (@Session["UserId"] != null)
                     {
-                        <li>
-                            Hi @Session["Username"].ToString()
-                        </li>
+                        <li><a href="#">Hi @Session["Username"].ToString()</a></li>
+                        @*<li>@Html.ActionLink($"Hi {@Session["Username"].ToString()}", "#")</li>*@
                     }
                 </ul>
             </div>

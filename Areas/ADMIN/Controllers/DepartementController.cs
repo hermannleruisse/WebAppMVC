@@ -1,9 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
+using WebAppMVC.DTO;
+using WebAppMVC.Helpers;
 using WebAppMVC.Models;
 
 namespace WebAppMVC.Areas.ADMIN.Controllers
@@ -12,10 +19,12 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
     {
         // GET: ADMIN/Departement
         private readonly ApplicationDbContext context;
+        public readonly string dir;
 
         public DepartementController()
         {
             context = new ApplicationDbContext();
+            dir = Folder.DirDep;
         }
 
         public ActionResult Index()
@@ -24,23 +33,113 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
             return View(departements);
         }
 
+        public ActionResult Create()
+        {
+            return View("create");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Departement departement)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                return View("create");
+            }
+            if (!departement.Photo.IsValid())
+            {
+                ModelState.AddModelError("Photo", "Veuillez charger un fichier .png, .jpg, .jpeg, .gif <= 5 MB");
+                return View("create", departement);
+            }
+
+            try
             {
                 using (var ctx = new ApplicationDbContext())
                 {
+                    //string oldName = Path.GetFileName(departement.Photo.FileName);
+                    //string newName = Guid.NewGuid().ToString()+Path.GetExtension(departement.Photo.FileName);
+                    //string path = Path.Combine(Server.MapPath($"~/UploadedFiles/{dir}"), newName);
+                    //departement.Photo.SaveAs(path);
+                    
+                    departement.Url = FileManager.CustomUploadFile(departement.Photo, dir);
                     ctx.Departements.Add(departement);
+
                     ctx.SaveChanges();
+                    TempData["Message"] = "Nouvelle enrégistrement réussie avec succès !";
                 }
-                ViewBag.Message = "Message envoyer avec succès !";
-                return View("Index");
+            }
+            catch (Exception exc)
+            {
+                ViewBag.Message = exc.Message;
+                throw exc;
+            }
+            return RedirectToAction("Index");
+        }
+
+        
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Departement departement = context.Departements.Find(id);
+            if (departement == null)
+            {
+                return HttpNotFound();
             }
 
-            ViewBag.Message = "Echec d'envoie de message ";
-            return View("Index");
+
+            return View("edit", departement);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int? id, Departement departement)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Index");
+            }
+            try
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var dep = ctx.Departements.Find(id);
+                    if (departement.Photo != null){
+                        if (!departement.Photo.IsValid())
+                        {
+                            ModelState.AddModelError("Photo", "Veuillez charger un fichier .png, .jpg, .jpeg, .gif <= 5 MB");
+                            return View("edit", departement);
+                        }
+
+                        string oldImage = dep.Url;
+                        string oldPath = Server.MapPath($"~/UploadedFiles/{dir}/{oldImage}");
+                        FileInfo file = new FileInfo(oldPath);
+                        if (file.Exists)//check file exsit or not  
+                        {
+                            file.Delete();
+                        }
+                        dep.Url = FileManager.CustomUploadFile(departement.Photo, dir);
+                    }
+
+                    dep.Libelle = departement.Libelle;
+                    dep.Description = departement.Description;
+
+                    ctx.Entry(dep).State = EntityState.Modified;
+                    if(TryUpdateModel(dep))
+                    ctx.SaveChanges();
+
+                    TempData["Message"] = "Mise à jour réussie avec succès !";
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception exc)
+            {
+                ViewBag.Message = exc.Message;
+                throw exc;
+            }
         }
 
         public ActionResult Details(int? id)

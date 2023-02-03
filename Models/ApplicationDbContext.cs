@@ -21,5 +21,6 @@ namespace WebAppMVC.Models
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Adresse> Adresses { get; set; }
         public DbSet<Departement> Departements { get; set; }
+        public DbSet<Docteur> Docteurs { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Web;
 
 namespace WebAppMVC.Models
 {
-    public class Adresse
+    public class Adresse : Social
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -15,17 +15,5 @@ namespace WebAppMVC.Models
         public string Location { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-
-        [Display(Name = "Lien twitter")]
-        public string UrlTwitter { get; set; }
-
-        [Display(Name = "Lien facebook")]
-        public string UrlFacebook { get; set; }
-
-        [Display(Name = "Lien instagram")]
-        public string UrlInstagram { get; set; }
-        
-        [Display(Name = "Lien google map")]
-        public string UrlMap { get; set; }
     }
 }

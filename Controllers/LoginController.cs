@@ -32,7 +32,7 @@ namespace WebAppMVC.Controllers
                         Session["UserId"] = us.Id;
                         Session["Username"] = us.Username;
                         Session["Role"] = us.Role;
-                        Session.Timeout = 10;
+                        Session.Timeout = 2;
                         return RedirectToAction("Index", "Dashboard", new { area = "ADMIN" });
                     }
                 }
