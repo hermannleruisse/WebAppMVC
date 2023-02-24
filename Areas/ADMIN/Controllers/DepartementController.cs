@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Web;
-using System.Web.Configuration;
 using System.Web.Mvc;
-using WebAppMVC.DTO;
 using WebAppMVC.Helpers;
 using WebAppMVC.Models;
 
@@ -124,8 +119,8 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
                         dep.Url = FileManager.CustomUploadFile(departement.Photo, dir);
                     }
 
-                    dep.Libelle = departement.Libelle;
-                    dep.Description = departement.Description;
+                    //dep.Libelle = departement.Libelle;
+                    //dep.Description = departement.Description;
 
                     ctx.Entry(dep).State = EntityState.Modified;
                     if(TryUpdateModel(dep))

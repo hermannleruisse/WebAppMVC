@@ -24,5 +24,20 @@ namespace WebAppMVC.Helpers
         {
             return context.Departements.ToList();
         }
+
+        public static IEnumerable<Docteur> LoadDocteur()
+        {
+            return context.Docteurs.ToList();
+        }
+        
+        public static IEnumerable<Temoignage> LoadTemoignage()
+        {
+            return context.Temoignages.ToList();
+        }
+
+        public static IEnumerable<Service> LoadService()
+        {
+            return context.Services.ToList();
+        }
     }
 }

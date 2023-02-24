@@ -4,12 +4,14 @@
     ViewBag.Title = "create";
 }
 
+@Scripts.Render("~/Content/assets/ckeditor/ckeditor.js")
+
 <h2>create</h2>
 
-@using (Html.BeginForm("Create", "Departement", new { area = "ADMIN"}, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Departement", new { area = "ADMIN" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Departement</h4>
         <hr />
@@ -40,6 +42,24 @@
             </div>
         </div>
 
+        @*<hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.TitreSection, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TitreSection, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TitreSection, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DescriptionSection, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.DescriptionSection, new {@id = "FullDescription", @class = "form-control", @rows = "5" })
+                @Html.ValidationMessageFor(model => model.DescriptionSection, "", new { @class = "text-danger" })
+                <script>CKEDITOR.replace("FullDescription");</script>
+            </div>
+        </div>*@
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Créer" class="btn btn-default" />
@@ -49,5 +69,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Retour à la liste", "Index")
 </div>

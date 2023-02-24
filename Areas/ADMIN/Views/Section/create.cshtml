@@ -1,0 +1,60 @@
+﻿@using WebAppMVC.Models
+
+@model Section
+
+@{
+    ViewBag.Title = "create";
+}
+
+@Scripts.Render("~/Content/assets/ckeditor/ckeditor.js")
+
+<h2>create</h2>
+
+@using (Html.BeginForm("Create", "Section", new { area = "ADMIN" }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Section</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Menu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Menu", new SelectList(new ApplicationDbContext().Menus.ToList(), "Id", "Libelle"), "Choisir le menu", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Menu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TitreSection, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TitreSection, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TitreSection, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DescriptionSection, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DescriptionSection, new { htmlAttributes = new { @id = "FullDescription", @class = "form-control", @rows = "5" } })
+            @Html.ValidationMessageFor(model => model.DescriptionSection, "", new { @class = "text-danger" })
+            <script>CKEDITOR.replace("FullDescription");</script>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Créer" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Retour à la liste", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

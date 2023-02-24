@@ -1,0 +1,33 @@
+﻿@model WebAppMVC.Models.Service
+
+@{
+    ViewBag.Title = "delete";
+}
+
+<h2>Supprimer</h2>
+
+<h3>Etes vous sûr de vouloir supprimer ce enregistrement ?</h3>
+<div>
+    <h4>Service</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Libelle)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("Delete", "Service", new { id = Model.Id }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-default" /> |
+            @Html.ActionLink("Retour à la liste", "Index")
+        </div>
+    }
+</div>

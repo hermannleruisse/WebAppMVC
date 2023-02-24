@@ -2,13 +2,45 @@
     <div class="container">
 
         <div class="section-title">
-            <h2>Doctors</h2>
+            <h2>Docteurs</h2>
             <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
         <div class="row">
+            @foreach (var doc in @Model.Docteurs)
+            {
+                <div class="col-lg-6">
+                    <div class="member d-flex align-items-start">
+                        <div class="pic"><img src="@Url.Content(doc.getPhotoUrl())" class="img-fluid" alt=""></div>
+                        <div class="member-info">
+                            <h4>@doc.NomComplet</h4>
+                            <span>@doc.Titre</span>
+                            <p>@doc.Description</p>
+                            <div class="social">
+                                @if (!string.IsNullOrWhiteSpace(@doc.UrlTwitter))
+                                {
+                                    <a href="@doc.UrlTwitter"><i class="ri-twitter-fill"></i></a>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(@doc.UrlFacebook))
+                                {
+                                    <a href="@doc.UrlFacebook"><i class="ri-facebook-fill"></i></a>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(@doc.UrlInstagram))
+                                {
+                                    <a href="@doc.UrlInstagram"><i class="ri-instagram-fill"></i></a>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(@doc.UrlLinkedin))
+                                {
+                                    <a href="@doc.UrlLinkedin"> <i class="ri-linkedin-box-fill"></i> </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
 
-            <div class="col-lg-6">
+
+            @*<div class="col-lg-6">
                 <div class="member d-flex align-items-start">
                     <div class="pic"><img src="~/assets/img/doctors/doctors-1.jpg" class="img-fluid" alt=""></div>
                     <div class="member-info">
@@ -74,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
 
         </div>
 

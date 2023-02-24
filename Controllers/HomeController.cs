@@ -16,6 +16,9 @@ namespace WebAppMVC.Controllers
             CustomViewModel cVM = new CustomViewModel();
             cVM.Adresse = LoadData.LoadAdress();
             cVM.Departements = LoadData.LoadDepartement();
+            cVM.Docteurs = LoadData.LoadDocteur();
+            cVM.Temoignages = LoadData.LoadTemoignage();
+            cVM.Services = LoadData.LoadService();
             //cVM.Contact = new Contact();
 
             return View(cVM);

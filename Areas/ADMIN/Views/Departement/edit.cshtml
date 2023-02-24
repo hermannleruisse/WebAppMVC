@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Edit", "Departement", new { area = "ADMIN" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Departement</h4>
         <hr />
@@ -49,5 +49,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Retour à la liste", "Index")
 </div>

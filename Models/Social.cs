@@ -17,6 +17,9 @@ namespace WebAppMVC.Models
         [Display(Name = "Lien instagram")]
         public string UrlInstagram { get; set; }
 
+        [Display(Name = "Lien linkedin")]
+        public string UrlLinkedin { get; set; }
+
         [Display(Name = "Lien google map")]
         public string UrlMap { get; set; }
     }

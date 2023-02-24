@@ -15,7 +15,7 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
             {
                 return View();
             }
-            return RedirectToAction("Login");
+            return RedirectToAction("Login", "Login", new { area = string.Empty });
         }
     }
 }

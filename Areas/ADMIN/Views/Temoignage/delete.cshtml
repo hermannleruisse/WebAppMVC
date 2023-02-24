@@ -1,0 +1,40 @@
+﻿@model WebAppMVC.Models.Temoignage
+
+@{
+    ViewBag.Title = "delete";
+}
+
+<h2>delete</h2>
+
+<h3>Etes vous sûr de vouloir supprimer ce enregistrement ?</h3>
+<div>
+    <h4>Temoignage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomComplet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomComplet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("Delete", "Temoignage", new { id = Model.Id })) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-default" /> |
+            @Html.ActionLink("Retour à la liste", "Index")
+        </div>
+    }
+</div>

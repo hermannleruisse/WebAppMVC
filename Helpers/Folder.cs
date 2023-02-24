@@ -10,5 +10,6 @@ namespace WebAppMVC.Helpers
     {
         public static string DirDep = WebConfigurationManager.AppSettings["CustomFolderDepImage"];
         public static string DirDoc = WebConfigurationManager.AppSettings["CustomFolderDocImage"];
+        public static string DirTesti = WebConfigurationManager.AppSettings["CustomFolderTestiImage"];
     }
 }
