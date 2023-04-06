@@ -12,15 +12,9 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
 {
     public class TemoignageController : Controller
     {
-        private readonly ApplicationDbContext context;
-        public readonly string dir;
-
-        public TemoignageController()
-        {
-            context = new ApplicationDbContext();
-            dir = Folder.DirTesti;
-        }
-
+        private readonly ApplicationDbContext context = ApplicationDbContext.getInstance();
+        public readonly string dir = Folder.DirTesti;
+        
         // GET: ADMIN/Temoignage
         public ActionResult Index()
         {
@@ -44,7 +38,7 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
 
             try
             {
-                using (var ctx = new ApplicationDbContext())
+                using (var ctx = context)
                 {
                     temoignage.Url = FileManager.CustomUploadFile(temoignage.Photo, dir);
                     ctx.Temoignages.Add(temoignage);
@@ -88,7 +82,7 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
             }
             try
             {
-                using (var ctx = new ApplicationDbContext())
+                using (var ctx = context)
                 {
                     var doc = ctx.Docteurs.Find(id);
                     if (temoignage.Photo != null)

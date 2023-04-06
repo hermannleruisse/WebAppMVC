@@ -8,12 +8,7 @@ namespace WebAppMVC.Helpers
 {
     public static class LoadData
     {
-        private static readonly ApplicationDbContext context;
-
-        static LoadData()
-        {
-            context = new ApplicationDbContext();
-        }
+        private static readonly ApplicationDbContext context = ApplicationDbContext.getInstance();
 
         public static Adresse LoadAdress()
         {
@@ -38,6 +33,16 @@ namespace WebAppMVC.Helpers
         public static IEnumerable<Service> LoadService()
         {
             return context.Services.ToList();
+        }
+
+        public static IEnumerable<WhyUs> LoadWhyUs()
+        {
+            return context.WhyUs.ToList();
+        }
+
+        public static IEnumerable<About> LoadAbout()
+        {
+            return context.Abouts.ToList();
         }
     }
 }

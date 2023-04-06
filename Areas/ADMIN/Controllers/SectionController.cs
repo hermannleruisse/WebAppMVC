@@ -11,13 +11,8 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
     public class SectionController : Controller
     {
         // GET: ADMIN/Section
-        private readonly ApplicationDbContext context;
-
-        public SectionController()
-        {
-            context = new ApplicationDbContext();
-        }
-
+        private readonly ApplicationDbContext context = ApplicationDbContext.getInstance();
+        
         public ActionResult Index()
         {
             IList<Section> sections = context.Sections.ToList();
@@ -40,7 +35,7 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
 
             try
             {
-                using (var ctx = new ApplicationDbContext())
+                using (var ctx = context)
                 {
                     ctx.Sections.Add(section);
                     ctx.SaveChanges();
@@ -82,7 +77,7 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
             }
             try
             {
-                using (var ctx = new ApplicationDbContext())
+                using (var ctx = context)
                 {
                     var sec = ctx.Sections.Find(id);
 

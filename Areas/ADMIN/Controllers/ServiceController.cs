@@ -11,12 +11,7 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
 {
     public class ServiceController : Controller
     {
-        private readonly ApplicationDbContext context;
-
-        public ServiceController()
-        {
-            context = new ApplicationDbContext();
-        }
+        private readonly ApplicationDbContext context = ApplicationDbContext.getInstance();
 
         // GET: ADMIN/Service
 
@@ -42,7 +37,7 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
             
             try
             {
-                using (var ctx = new ApplicationDbContext())
+                using (var ctx = context)
                 {
                     ctx.Services.Add(service);
                     ctx.SaveChanges();
@@ -83,7 +78,7 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
 
             try
             {
-                using (var ctx = new ApplicationDbContext())
+                using (var ctx = context)
                 {
                     var ser = ctx.Services.Find(id);
 

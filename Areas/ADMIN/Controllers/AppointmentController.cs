@@ -8,50 +8,49 @@ using WebAppMVC.Models;
 
 namespace WebAppMVC.Areas.ADMIN.Controllers
 {
-    public class ContactController : Controller
+    public class AppointmentController : Controller
     {
         private readonly ApplicationDbContext context = ApplicationDbContext.getInstance();
 
-        // GET: ADMIN/Contact
+        // GET: ADMIN/Appointment
         public ActionResult Index()
         {
-            IList<Contact> contacts = context.Contacts.OrderByDescending(x => x.Date).ToList();
-            
-            return View(contacts);
+            IList<Appointment> appointments = context.Appointments.OrderByDescending(x => x.Date).ToList();
+            return View(appointments);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Contact contact)
+        public ActionResult Create(Appointment appointment)
         {
             if (ModelState.IsValid)
             {
-                using(var ctx = context)
+                using (var ctx = context)
                 {
-                    ctx.Contacts.Add(contact);
+                    ctx.Appointments.Add(appointment);
                     ctx.SaveChanges();
                 }
-                ViewBag.Message = "Message envoyer avec succès !";
+                ViewBag.Message = "Votre requête à été soumise. Merci!";
                 return View("Index");
             }
-            
-            ViewBag.Message = "Echec d'envoie de message ";
+
+            ViewBag.Message = "Votre requête n'à pas été soumise. Réessayer !";
             return View("Index");
         }
 
         public ActionResult Details(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = context.Contacts.Find(id);
-            if(contact == null)
+            Appointment appointment = context.Appointments.Find(id);
+            if (appointment == null)
             {
                 return HttpNotFound();
             }
-            
-            return View("detail", contact);
+
+            return View("detail", appointment);
         }
 
         public ActionResult QuestionDelete(int? id)
@@ -60,19 +59,19 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = context.Contacts.Find(id);
-            if (contact == null)
+            Appointment appointment = context.Appointments.Find(id);
+            if (appointment == null)
             {
                 return HttpNotFound();
             }
 
-            return View("delete", contact);
+            return View("delete", appointment);
         }
 
         [HttpPost]
         public ActionResult Delete(int? id)
         {
-            context.Contacts.Remove(context.Contacts.Find(id));
+            context.Appointments.Remove(context.Appointments.Find(id));
             context.SaveChanges();
             return RedirectToAction("Index");
         }

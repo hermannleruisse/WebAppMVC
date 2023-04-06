@@ -17,7 +17,7 @@ namespace WebAppMVC
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Database.SetInitializer(new AppDBInitializer());
-            using (var ctx = new ApplicationDbContext())
+            using (var ctx = ApplicationDbContext.getInstance())
             {
                 ctx.Database.Initialize(true);
             }

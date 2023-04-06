@@ -5,10 +5,16 @@ namespace WebAppMVC.Models
 {
     public class ApplicationDbContext: DbContext
     {
-        public ApplicationDbContext(): base("KondiDB") //Connection string in web.config
+        private static ApplicationDbContext DbContextInstance = new ApplicationDbContext();
+        private ApplicationDbContext(): base("KondiDB") //Connection string in web.config
         {
             //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseAlways<ApplicationDbContext>());
             Database.SetInitializer<ApplicationDbContext>(new AppDBInitializer());
+        }
+
+        public static ApplicationDbContext getInstance()
+        {
+            return DbContextInstance;
         }
 
         public DbSet<Product> Products { get; set; }
@@ -26,5 +32,9 @@ namespace WebAppMVC.Models
         public DbSet<Service> Services { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Section> Sections { get; set; }
+        public DbSet<About> Abouts { get; set; }
+        public DbSet<WhyUs> WhyUs { get; set; }
+        public DbSet<Newsletter> Newsletters { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
     }
 }

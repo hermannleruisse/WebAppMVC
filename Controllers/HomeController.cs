@@ -19,6 +19,8 @@ namespace WebAppMVC.Controllers
             cVM.Docteurs = LoadData.LoadDocteur();
             cVM.Temoignages = LoadData.LoadTemoignage();
             cVM.Services = LoadData.LoadService();
+            cVM.WhyUss = LoadData.LoadWhyUs();
+            cVM.Abouts = LoadData.LoadAbout();
             //cVM.Contact = new Contact();
 
             return View(cVM);

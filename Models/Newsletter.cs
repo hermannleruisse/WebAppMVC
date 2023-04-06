@@ -7,10 +7,12 @@ using System.Web;
 
 namespace WebAppMVC.Models
 {
-    public class Service : CustomIcon
+    public class Newsletter
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public string email { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
     }
 }

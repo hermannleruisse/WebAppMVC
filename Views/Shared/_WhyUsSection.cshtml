@@ -17,7 +17,19 @@
             <div class="col-lg-8 d-flex align-items-stretch">
                 <div class="icon-boxes d-flex flex-column justify-content-center">
                     <div class="row">
-                        <div class="col-xl-4 d-flex align-items-stretch">
+                        @foreach (var w in @Model.WhyUss)
+                        {
+                            <div class="col-xl-4 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0">
+                                    <i class="@($"bx bx-{@w.Icone}")"></i>
+                                    <h4>@w.Libelle</h4>
+                                    <p>@w.Description</p>
+                                </div>
+                            </div>
+                        }
+
+
+                        @*<div class="col-xl-4 d-flex align-items-stretch">
                             <div class="icon-box mt-4 mt-xl-0">
                                 <i class="bx bx-receipt"></i>
                                 <h4>Corporis voluptates sit</h4>
@@ -37,7 +49,7 @@
                                 <h4>Labore consequatur</h4>
                                 <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div><!-- End .content-->
             </div>

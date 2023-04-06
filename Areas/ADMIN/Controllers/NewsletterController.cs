@@ -8,51 +8,36 @@ using WebAppMVC.Models;
 
 namespace WebAppMVC.Areas.ADMIN.Controllers
 {
-    public class ContactController : Controller
+    public class NewsletterController : Controller
     {
         private readonly ApplicationDbContext context = ApplicationDbContext.getInstance();
 
-        // GET: ADMIN/Contact
+        // GET: ADMIN/Newsletter
         public ActionResult Index()
         {
-            IList<Contact> contacts = context.Contacts.OrderByDescending(x => x.Date).ToList();
-            
-            return View(contacts);
+            IList<Newsletter> newsletters = context.Newsletters.OrderByDescending(x => x.Date).ToList();
+            return View(newsletters);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Contact contact)
+        public ActionResult Create(Newsletter newsletter)
         {
             if (ModelState.IsValid)
             {
-                using(var ctx = context)
+                using (var ctx = context)
                 {
-                    ctx.Contacts.Add(contact);
+                    ctx.Newsletters.Add(newsletter);
                     ctx.SaveChanges();
                 }
-                ViewBag.Message = "Message envoyer avec succès !";
+                ViewBag.Message = "Souscription envoyer avec succès !";
                 return View("Index");
             }
-            
+
             ViewBag.Message = "Echec d'envoie de message ";
             return View("Index");
         }
 
-        public ActionResult Details(int? id)
-        {
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Contact contact = context.Contacts.Find(id);
-            if(contact == null)
-            {
-                return HttpNotFound();
-            }
-            
-            return View("detail", contact);
-        }
 
         public ActionResult QuestionDelete(int? id)
         {
@@ -60,19 +45,19 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = context.Contacts.Find(id);
-            if (contact == null)
+            Newsletter newsletter = context.Newsletters.Find(id);
+            if (newsletter == null)
             {
                 return HttpNotFound();
             }
 
-            return View("delete", contact);
+            return View("delete", newsletter);
         }
 
         [HttpPost]
         public ActionResult Delete(int? id)
         {
-            context.Contacts.Remove(context.Contacts.Find(id));
+            context.Newsletters.Remove(context.Newsletters.Find(id));
             context.SaveChanges();
             return RedirectToAction("Index");
         }

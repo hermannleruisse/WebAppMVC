@@ -13,14 +13,8 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
     public class DepartementController : Controller
     {
         // GET: ADMIN/Departement
-        private readonly ApplicationDbContext context;
-        public readonly string dir;
-
-        public DepartementController()
-        {
-            context = new ApplicationDbContext();
-            dir = Folder.DirDep;
-        }
+        private readonly ApplicationDbContext context = ApplicationDbContext.getInstance();
+        public readonly string dir = Folder.DirDep;
 
         public ActionResult Index()
         {
@@ -49,7 +43,7 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
 
             try
             {
-                using (var ctx = new ApplicationDbContext())
+                using (var ctx = context)
                 {
                     //string oldName = Path.GetFileName(departement.Photo.FileName);
                     //string newName = Guid.NewGuid().ToString()+Path.GetExtension(departement.Photo.FileName);
@@ -99,7 +93,7 @@ namespace WebAppMVC.Areas.ADMIN.Controllers
             }
             try
             {
-                using (var ctx = new ApplicationDbContext())
+                using (var ctx = context)
                 {
                     var dep = ctx.Departements.Find(id);
                     if (departement.Photo != null){

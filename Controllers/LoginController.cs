@@ -11,6 +11,7 @@ namespace WebAppMVC.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly ApplicationDbContext context = ApplicationDbContext.getInstance();
         // GET: Login
         public ActionResult Index()
         {
@@ -23,7 +24,7 @@ namespace WebAppMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var ctx = new ApplicationDbContext())
+                using (var ctx = context)
                 {
                     String pass = BCryptNet.HashPassword(auth.Password);
                     var us = ctx.Users.Where(x => x.Username.Equals(auth.Username)).FirstOrDefault();

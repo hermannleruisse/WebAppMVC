@@ -7,7 +7,7 @@ using System.Web;
 
 namespace WebAppMVC.Models
 {
-    public class Service : CustomIcon
+    public class About : CustomIcon
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

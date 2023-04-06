@@ -14,5 +14,7 @@ namespace WebAppMVC.DTO
         public IEnumerable<Docteur> Docteurs { get; set; }
         public IEnumerable<Temoignage> Temoignages { get; set; }
         public IEnumerable<Service> Services { get; set; }
+        public IEnumerable<WhyUs> WhyUss { get; set; }
+        public IEnumerable<About> Abouts { get; set; }
     }
 }

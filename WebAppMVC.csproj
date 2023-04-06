@@ -177,13 +177,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\ADMIN\ADMINAreaRegistration.cs" />
+    <Compile Include="Areas\ADMIN\Controllers\AboutController.cs" />
+    <Compile Include="Areas\ADMIN\Controllers\AppointmentController.cs" />
     <Compile Include="Areas\ADMIN\Controllers\ContactController.cs" />
     <Compile Include="Areas\ADMIN\Controllers\DashboardController.cs" />
     <Compile Include="Areas\ADMIN\Controllers\DepartementController.cs" />
     <Compile Include="Areas\ADMIN\Controllers\DocteurController.cs" />
+    <Compile Include="Areas\ADMIN\Controllers\NewsletterController.cs" />
     <Compile Include="Areas\ADMIN\Controllers\SectionController.cs" />
     <Compile Include="Areas\ADMIN\Controllers\ServiceController.cs" />
     <Compile Include="Areas\ADMIN\Controllers\TemoignageController.cs" />
+    <Compile Include="Areas\ADMIN\Controllers\WhyUsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="DTO\AuthenticateRequest.cs" />
@@ -200,13 +204,17 @@
     <Compile Include="Helpers\FileManager.cs" />
     <Compile Include="Helpers\ValidateFileCustom.cs" />
     <Compile Include="Helpers\ValidateFile.cs" />
+    <Compile Include="Models\About.cs" />
     <Compile Include="Models\Adresse.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\CustomIcon.cs" />
     <Compile Include="Models\Departement.cs" />
     <Compile Include="Models\Docteur.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\Newsletter.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Section.cs" />
@@ -215,6 +223,7 @@
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Temoignage.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\WhyUs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -720,6 +729,16 @@
     <Content Include="Areas\ADMIN\Views\Service\edit.cshtml" />
     <Content Include="Areas\ADMIN\Views\Service\detail.cshtml" />
     <Content Include="Areas\ADMIN\Views\Service\delete.cshtml" />
+    <Content Include="Areas\ADMIN\Views\About\Index.cshtml" />
+    <Content Include="Areas\ADMIN\Views\About\create.cshtml" />
+    <Content Include="Areas\ADMIN\Views\About\edit.cshtml" />
+    <Content Include="Areas\ADMIN\Views\About\delete.cshtml" />
+    <Content Include="Areas\ADMIN\Views\WhyUs\Index.cshtml" />
+    <Content Include="Areas\ADMIN\Views\WhyUs\create.cshtml" />
+    <Content Include="Areas\ADMIN\Views\WhyUs\edit.cshtml" />
+    <Content Include="Areas\ADMIN\Views\WhyUs\delete.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Newsletter\Index.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Newsletter\delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -740,6 +759,11 @@
     <Content Include="UploadedFiles\Docteur\doctors-2.jpg" />
     <Content Include="UploadedFiles\Docteur\doctors-3.jpg" />
     <Content Include="UploadedFiles\Docteur\doctors-4.jpg" />
+    <Content Include="UploadedFiles\Temoignage\testimonials-1.jpg" />
+    <Content Include="UploadedFiles\Temoignage\testimonials-2.jpg" />
+    <Content Include="UploadedFiles\Temoignage\testimonials-3.jpg" />
+    <Content Include="UploadedFiles\Temoignage\testimonials-4.jpg" />
+    <Content Include="UploadedFiles\Temoignage\testimonials-5.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -775,7 +799,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ADMIN\Data\" />
-    <Folder Include="UploadedFiles\Temoignage\" />
+    <Folder Include="Areas\ADMIN\Views\Appointment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

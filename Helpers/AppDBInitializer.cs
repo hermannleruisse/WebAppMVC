@@ -161,6 +161,23 @@ namespace WebAppMVC.Helpers
             };
             context.Menus.AddRange(menus);
 
+            var abouts = new List<About>
+            {
+                new About { Libelle = "Lorem Ipsum", Description = "Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident", Icone = "fingerprint"}
+                ,new About { Libelle = "Nemo Enim", Description = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque", Icone = "gift"}
+                ,new About { Libelle = "Dine Pad", Description = "Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis", Icone = "atom"}
+            };
+
+            context.Abouts.AddRange(abouts);
+
+            var whyUs = new List<WhyUs>
+            {
+                new WhyUs { Libelle = "Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip", Icone = "receipt"}
+                ,new WhyUs { Libelle = "Ullamco laboris ladore pan", Description = "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunte", Icone = "cube-alt"}
+                ,new WhyUs { Libelle = "Labore consequatu", Description = "Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere", Icone = "images"}
+            };
+            context.WhyUs.AddRange(whyUs);
+
             context.SaveChanges();
         }
     }
